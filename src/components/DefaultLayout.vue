@@ -87,6 +87,7 @@ import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuIt
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/vue/24/outline'
 import { useStore } from 'vuex'
 import { computed } from 'vue'
+import { useRouter } from 'vue-router'
 
 const navigation = [
   { name: 'Dashboard', to: { name: 'Dashboard' } },
@@ -94,6 +95,14 @@ const navigation = [
 ];
 
 const store = useStore();
+const router = useRouter();
+
+function logout() {
+  store.commit('logout');
+  router.push({
+    name: 'Login'
+  });
+}
 
 const user = computed(() => store.state.user.data);
 </script>
