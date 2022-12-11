@@ -33,7 +33,7 @@ const store = createStore({
     },
     setUser: (state, userData) => {
       state.user.token = userData.token;
-      state.user.data = userData.data;
+      state.user.data = userData.user;
       sessionStorage.setItem("TOKEN", userData.token);
     }
   },
