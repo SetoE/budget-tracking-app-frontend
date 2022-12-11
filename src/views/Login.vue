@@ -12,6 +12,14 @@
     </p>
   </div>
   <form class="mt-8 space-y-6" @submit="login">
+    <div v-if="errorMsg" class="py-3 px-5 bg-red-500 text-white rounded flex items-center justify-between">
+      {{ errorMsg }}
+
+      <span @click="errorMsg = ''"
+        class="h-5 w-5 rounded-full flex items-center justify-center transition-colors cursor-pointer hover:bg-[rgba(0,0,0,0.2)]">
+        <XMarkIcon class=" text-white"></XMarkIcon>
+      </span>
+    </div>
     <input type="hidden" name="remember" value="true" />
     <div class="-space-y-px rounded-md shadow-sm">
       <div>
@@ -22,7 +30,8 @@
       </div>
       <div>
         <label for="password" class="sr-only">Password</label>
-        <input id="password" name="password" type="password" autocomplete="current-password" required="" v-model="user.password"
+        <input id="password" name="password" type="password" autocomplete="current-password" required=""
+          v-model="user.password"
           class="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
           placeholder="Password" />
       </div>
@@ -49,9 +58,10 @@
 </template>
   
 <script setup>
-import { LockClosedIcon } from '@heroicons/vue/20/solid'
+import { LockClosedIcon, XMarkIcon } from '@heroicons/vue/20/solid'
 import store from '../store'
 import { useRouter } from 'vue-router'
+import { ref } from 'vue'
 
 const router = useRouter();
 
@@ -61,6 +71,8 @@ const user = {
   remember: false,
 }
 
+let errorMsg = ref('');
+
 function login(ev) {
   ev.preventDefault();
 
@@ -69,6 +81,9 @@ function login(ev) {
       router.push({
         name: 'Dashboard',
       })
+    })
+    .catch(err => {
+      errorMsg.value = err.response.data.error;
     });
 }
 </script>
