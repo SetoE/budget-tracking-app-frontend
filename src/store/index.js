@@ -1,13 +1,57 @@
 import { createStore } from 'vuex';
 import axiosClient from '../axios';
 
+const tmpTransactions = [
+  {
+    id: 100,
+    amount: 129,
+    description: "Spotify subscription",
+    status: "Paid",
+    payee_payor: 'Spotify',
+    category_id: 1,
+    date: "2022-12-16",
+    time: "16:00:00",
+  },
+  {
+    id: 200,
+    amount: 7000,
+    description: "Car mortgage",
+    status: "Paid",
+    payee_payor: 'Papa',
+    category_id: 2,
+    date: "2022-12-15",
+    time: "12:00:00",
+  },
+  {
+    id: 300,
+    amount: 1500,
+    description: "Electricity",
+    status: "Paid",
+    payee_payor: 'Papa',
+    category_id: 3,
+    date: "2022-12-15",
+    time: "08:00:00",
+  },
+  {
+    id: 400,
+    amount: 1500,
+    description: "Internet Bill",
+    status: "Paid",
+    payee_payor: 'Papa',
+    category_id: 3,
+    date: "2022-12-15",
+    time: "13:00:00",
+  },
+];
+
 const store = createStore({
   state: {
     user: {
       data: {
       },
       token: sessionStorage.getItem("TOKEN"),
-    }
+    },
+    transactions: [...tmpTransactions],
   },
   getters: {},
   actions: {
