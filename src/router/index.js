@@ -7,6 +7,7 @@ import Dashboard from '../views/Dashboard.vue'
 import Transactions from '../views/Transactions.vue'
 import Login from '../views/Login.vue'
 import Register from '../views/Register.vue'
+import TransactionView from '../views/TransactionView.vue'
 
 const routes = [
   {
@@ -17,6 +18,8 @@ const routes = [
     children: [
       { path: '/dashboard', name: 'Dashboard', component: Dashboard },
       { path: '/transactions', name: 'Transactions', component: Transactions },
+      { path: '/transactions/create', name: 'TransactionCreate', component: TransactionView },
+      { path: '/transactions/:id', name: 'TransactionView', component: TransactionView },
     ],
   },
   {
