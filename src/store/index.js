@@ -4,7 +4,7 @@ import axiosClient from '../axios';
 const tmpTransactions = [
   {
     id: 100,
-    amount: 129,
+    amount: '129.00',
     description: "Spotify subscription",
     status: "Paid",
     payee_payor: 'Spotify',
@@ -14,7 +14,7 @@ const tmpTransactions = [
   },
   {
     id: 200,
-    amount: 7000,
+    amount: '7000.00',
     description: "Car mortgage",
     status: "Paid",
     payee_payor: 'Papa',
@@ -24,7 +24,7 @@ const tmpTransactions = [
   },
   {
     id: 300,
-    amount: 1500,
+    amount: '1500.00',
     description: "Electricity",
     status: "Paid",
     payee_payor: 'Papa',
@@ -34,7 +34,7 @@ const tmpTransactions = [
   },
   {
     id: 400,
-    amount: 1500,
+    amount: '1500.00',
     description: "Internet Bill",
     status: "Paid",
     payee_payor: 'Papa',
