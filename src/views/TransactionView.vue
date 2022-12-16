@@ -108,6 +108,24 @@
           </div>
           <!--/ Time -->
 
+          <!--/ Transfer Record -->
+          <div class="col-span-6 grid grid-cols-5" v-if="!model.id">
+            <div class="col-span-2 grid grid-cols-1">
+              <label for="time" class="block text-sm font-medium text-gray-700">Add a transfer record</label>
+              <small class="block text-sm font-light text-gray-700">If a multi
+                transaction transfer, create a new transfer instead</small>
+            </div>
+            <div class="col-span-3">
+              <Switch v-model="model.add_transfer" :class="model.add_transfer ? 'bg-blue-600' : 'bg-gray-200'"
+                class="relative inline-flex h-6 w-11 items-center rounded-full">
+                <span class="sr-only">Enable notifications</span>
+                <span :class="model.add_transfer ? 'translate-x-6' : 'translate-x-1'"
+                  class="inline-block h-4 w-4 transform rounded-full bg-white transition" />
+              </Switch>
+            </div>
+          </div>
+          <!--/ Transfer Record  -->
+
           <!-- Submit -->
           <div class="col-span-6 flex justify-end">
             <button type="submit"
