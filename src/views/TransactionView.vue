@@ -129,17 +129,9 @@
           <!-- Submit -->
           <div class="col-span-6 flex justify-end">
             <button type="submit"
-              class="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Submit</button>
+              class="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Save</button>
           </div>
           <!--/ Submit -->
-        </div>
-      </div>
-
-      <div class="pt-6">
-        <div class="shadow sm:rounded-md sm:overflow-hidden">
-          <div class="px-4 py-5 bg-white space-y-6 sm:p-6 grid grid-cols-6 gap-3">
-            <div class="text-base font-medium text-gray-900" aria-hidden="true">Add a transfer record</div>
-          </div>
         </div>
       </div>
     </form>
@@ -148,11 +140,14 @@
 
 <script setup>
 import { ref } from 'vue';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
+import { Switch } from '@headlessui/vue';
 import PageComponent from '../components/PageComponent.vue';
 import store from '../store';
+import dayjs from 'dayjs';
 
 const route = useRoute();
+const router = useRouter();
 
 let model = ref({
   // user_id:
@@ -170,6 +165,16 @@ if (route.params.id) {
   model.value = store.state.transactions.find(
     (s) => s.id === parseInt(route.params.id)
   );
+}
+
+
+function saveTransaction() {
+  store.dispatch('saveTransaction', model.value).then(({ data }) => {
+    router.push({
+      name: "TransactionView",
+      params: { id: data.data.id },
+    });
+  });
 }
 
 </script>
