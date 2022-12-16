@@ -97,6 +97,17 @@ const store = createStore({
     },
   },
   mutations: {
+    saveTransaction: (state, transaction) => {
+      state.transactions = [...state.transactions, transaction.data];
+    },
+    updateTransaction: (state, transaction) => {
+      state.transactions = state.transactions.map((t) => {
+        if (t.id == transaction.data.id) {
+          return transaction.id;
+        }
+        return t;
+      });
+    },
     logout: (state) => {
       state.user.data = {};
       state.user.token = null;
