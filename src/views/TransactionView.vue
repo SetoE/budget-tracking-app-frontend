@@ -161,8 +161,9 @@ let model = ref({
   status: false,
   payee_payor: '',
   category_id: null,
-  date: new Date(),
-  time: new Date(),
+  date: dayjs().format('YYYY-MM-DD'),
+  time: dayjs().format('HH:mm'),
+  add_transfer: false,
 });
 
 if (route.params.id) {
