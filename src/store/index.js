@@ -55,6 +55,25 @@ const store = createStore({
   },
   getters: {},
   actions: {
+    saveTransaction({ commit }, transaction) {
+      let response;
+
+      if (transaction.id) {
+        response = axiosClient
+          .put(`/transaction/${transaction.id}`, transaction)
+          .then((res) => {
+            commit("updateTransaction", res.data);
+            return res;
+          });
+      } else {
+        response = axiosClient.post(`/transaction`, transaction).then((res) => {
+          commit("saveTransaction", res.data);
+          return res;
+        });
+      }
+
+      return response;
+    },
     register({ commit }, user) {
       return axiosClient.post('/register', user)
         .then(({ data }) => {
