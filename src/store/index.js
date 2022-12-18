@@ -11,6 +11,7 @@ const tmpTransactions = [
     category_id: 1,
     date: "2022-12-16",
     time: "16:00:00",
+    transfers: [],
   },
   {
     id: 200,
@@ -21,6 +22,7 @@ const tmpTransactions = [
     category_id: 2,
     date: "2022-12-15",
     time: "12:00:00",
+    transfers: [],
   },
   {
     id: 300,
@@ -31,6 +33,7 @@ const tmpTransactions = [
     category_id: 3,
     date: "2022-12-15",
     time: "08:00:00",
+    transfers: [],
   },
   {
     id: 400,
@@ -41,8 +44,30 @@ const tmpTransactions = [
     category_id: 3,
     date: "2022-12-15",
     time: "13:00:00",
+    transfers: [],
   },
 ];
+
+const tmpTransfers = [
+  {
+    id: 100,
+    name: "Transfer",
+    date: 12-15-2022,
+    amount: -300,
+  },
+  {
+    id: 200,
+    name: "Received",
+    date: 12-15-2022,
+    amount: 500,
+  },
+  {
+    id: 300,
+    name: "Transfer",
+    date: 12-15-2022,
+    amount: -1000,
+  },
+]
 
 const store = createStore({
   state: {
@@ -52,6 +77,7 @@ const store = createStore({
       token: sessionStorage.getItem("TOKEN"),
     },
     transactions: [...tmpTransactions],
+    transfers: [...tmpTransfers],
   },
   getters: {},
   actions: {
